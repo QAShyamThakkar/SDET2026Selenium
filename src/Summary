@@ -1,0 +1,28 @@
+1. What is selenium:
+Libraries
+
+2. Automation - Tool
+
+3. Automation Testing
+
+Expected vs Actual
+
+4. Amazon
+
+	Web Browser (Website)     - Selenium
+	Mobile Application (Mobile) - Appium
+	Desktop Application (Not available)
+
+5. What are the actions we can do with web browser
+
+	open
+	close
+	load url (search)
+	click
+	type
+	scroll up/down
+	right click
+	open new tab
+	mouse hover
+
+20-25 actions
