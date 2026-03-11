@@ -25,4 +25,47 @@ Expected vs Actual
 	open new tab
 	mouse hover
 
-20-25 actions
+6. HTML & CSS
+
+7. How many locator strategy we have in Selenium
+
+    ID    - Most Preferred way
+    Name
+    Class Name
+    Tag Name
+
+    Link Text (<a>)
+    Partial Link Text
+
+    Xpath       (Basics, Functions and Relations)
+    CSS Selector
+
+8. Radio Btn
+   Check Box
+   Dropdown - Select
+   Keyboard and Mouse actions - Actions
+
+------------------- Select Class
+
+WebElement DD = driver.findElement(By.ID)
+
+Select select = new Select(WebElement of DD);
+
+select.selectByIndex();
+select.selectByValue();
+select.selectByVisibleText();
+
+--------------------- Actions class
+
+Actions action = new Actions(driver);
+
+Hover the Mouse - actions.moveToElement(WebElement).build().perform();
+Drag and Drop   - actions.dragAndDrop(from1, to1).build().perform();
+Scroll          - actions.pause(Duration.ofMillis(4000)).scrollByAmount(300,300).build().perform();
+Keyboard Key    - actions.keyDown(Keys.CONTROL).click(signIN).keyUp(Keys.CONTROL).build().perform()
+
+9. Wait
+
+
+
+
