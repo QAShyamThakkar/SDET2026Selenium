@@ -20,18 +20,19 @@ public class MultipleWindowHandle {
         WebElement startFreeTrial = driver.findElement(By.xpath("//p[@class=\"notification__text\"]"));
         startFreeTrial.click();
 
-        String originalWindowID = driver.getWindowHandle();
-        Set<String> listOfWindowIDs = driver.getWindowHandles();
+//        System.out.println(driver.getWindowHandle());
+
+        String originalWindowID = driver.getWindowHandle();      //getting original window ID
+        Set<String> listOfWindowIDs = driver.getWindowHandles(); //getting All window IDs
+
         for (String newWindowID : listOfWindowIDs) {
             if (!originalWindowID.equals(newWindowID)) {
                 driver.switchTo().window(newWindowID);
-                break; // For one time - whenever switching windows, always break the loop after switching.
             }
         }
 
         WebElement firstName = driver.findElement(By.xpath("//input[contains(@id, 'UserFirstName')]"));
         firstName.sendKeys("Shyam");
-
 
     }
 }
