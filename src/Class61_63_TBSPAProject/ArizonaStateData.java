@@ -11,26 +11,37 @@ import java.util.List;
 
 public class ArizonaStateData {
 
-    static void main(String[] args) {
+    static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://portal.tsbpa.texas.gov/php/fpl/frmlookup.php");
         driver.manage().window().maximize();    //maximize chrome
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
 
-        WebElement state = driver.findElement(By.id("frmstate"));
-        Select select = new Select(state);
-        select.selectByVisibleText("Arizona");
+        for (int i = 0; i < 25; i++) {
 
-        WebElement submitBtn = driver.findElement(By.name("submit"));
-        submitBtn.click();
+            WebElement state = driver.findElement(By.id("frmstate"));
+            Select select = new Select(state);
+            select.selectByVisibleText("Arizona");
 
-        List<WebElement> listOFRows = driver.findElements(By.xpath("//table[@id=\"results\"]/tbody/tr"));
-        listOFRows.get(0).click();
+            WebElement submitBtn = driver.findElement(By.name("submit"));
+            submitBtn.click();
 
+            Thread.sleep(Duration.ofSeconds(5));
+            List<WebElement> listOFRows = driver.findElements(By.xpath("//table[@id=\"results\"]/tbody/tr"));
+//            System.out.println(listOFRows.size());
+            listOFRows.get(i).click();
 
+            List<WebElement> listOFData = driver.findElements(By.xpath("//table[@align=\"center\"]/tbody/tr/td[@colspan=\"2\"]"));
+            for (WebElement data : listOFData) {
+                System.out.print(data.getText() + " | ");
+            }
 
+            System.out.println();
 
+            WebElement backtoSelection = driver.findElement(By.xpath("//input[@type=\"submit\"]"));
+            backtoSelection.click();
+        }
     }
 
 }
