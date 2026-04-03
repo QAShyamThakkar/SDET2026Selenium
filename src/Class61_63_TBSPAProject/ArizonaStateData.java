@@ -11,6 +11,8 @@ import java.util.List;
 
 public class ArizonaStateData {
 
+    static int a;
+
     static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
@@ -18,7 +20,10 @@ public class ArizonaStateData {
         driver.manage().window().maximize();    //maximize chrome
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
 
-        for (int i = 0; i < 25; i++) {
+        int i = 0;
+        List<WebElement> listOFRows;
+
+        do {
 
             WebElement state = driver.findElement(By.id("frmstate"));
             Select select = new Select(state);
@@ -28,7 +33,7 @@ public class ArizonaStateData {
             submitBtn.click();
 
             Thread.sleep(Duration.ofSeconds(5));
-            List<WebElement> listOFRows = driver.findElements(By.xpath("//table[@id=\"results\"]/tbody/tr"));
+            listOFRows = driver.findElements(By.xpath("//table[@id=\"results\"]/tbody/tr"));
 //            System.out.println(listOFRows.size());
             listOFRows.get(i).click();
 
@@ -41,7 +46,10 @@ public class ArizonaStateData {
 
             WebElement backtoSelection = driver.findElement(By.xpath("//input[@type=\"submit\"]"));
             backtoSelection.click();
-        }
-    }
+            i++;
 
+        } while (i < listOFRows.size());
+    }
 }
+
+
